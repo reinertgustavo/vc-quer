@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quer casar comigo?</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        position: relative;
+        background-color: #fff7e8; /* Fundo amarelo claro */
+    }
+    #pergunta {
+        position: relative; /* Define a posição relativa */
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #sim {
+        background-color: #4CAF50;
+        color: white;
+        margin-right: 10px;
+    }
+    #nao {
+        background-color: #f44336;
+        color: white;
+    }
+    #heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(2);
+        font-size: 50px;
+        color: red;
+        z-index: 999;
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
+
+<div id="pergunta">
+    <p>Quer casar comigo?</p>
+    <button id="sim">Sim</button>
+    <button id="nao">Não</button>
+</div>
+
+<script>
+    const naoButton = document.getElementById('nao');
+    const perguntaBox = document.getElementById('pergunta');
+    const body = document.querySelector('body');
+
+    naoButton.addEventListener('mouseover', () => {
+        const randomX = Math.random() * (body.offsetWidth - perguntaBox.offsetWidth);
+        const randomY = Math.random() * (body.offsetHeight - perguntaBox.offsetHeight);
+        perguntaBox.style.position = 'absolute';
+        perguntaBox.style.left = randomX + 'px';
+        perguntaBox.style.top = randomY + 'px';
+    });
+
+    const simButton = document.getElementById('sim');
+    simButton.addEventListener('click', () => {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️ EU TE AMO ❤';
+        heart.setAttribute('id', 'heart');
+        body.appendChild(heart);
+	
+    });
+</script>
+
+</body>
+</html>
